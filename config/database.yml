@@ -1,0 +1,19 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: how_to_concat_in_in_rails_development
+
+test:
+  <<: *default
+  database: how_to_concat_in_in_rails_test
+
+production:
+  <<: *default
+  database: how_to_concat_in_in_rails_production
+  username: how_to_concat_in_in_rails
+  password: <%= ENV["HOW_TO_CONCAT_IN_IN_RAILS_DATABASE_PASSWORD"] %>
