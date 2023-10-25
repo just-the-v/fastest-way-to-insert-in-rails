@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_18_102410) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_092526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,12 +20,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_102410) do
     t.string "phone"
     t.string "email"
     t.string "role"
-    t.virtual "account_information", type: :string, as: "(((((((((first_name)::text || ' '::text) || (last_name)::text) || ' ('::text) || (role)::text) || ') can be contacted at '::text) || (email)::text) || ' or '::text) || (phone)::text)", stored: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-
-  create_view "account_informations", sql_definition: <<-SQL
-      SELECT concat(accounts.first_name, ' ', accounts.last_name, ' (', accounts.role, '), can be contacted at ', accounts.email, ' or ', accounts.phone) AS concatenated_string
-     FROM accounts;
-  SQL
 end
