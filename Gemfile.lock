@@ -54,6 +54,8 @@ GEM
     activerecord (7.0.8)
       activemodel (= 7.0.8)
       activesupport (= 7.0.8)
+    activerecord-import (1.5.0)
+      activerecord (>= 4.2)
     activestorage (7.0.8)
       actionpack (= 7.0.8)
       activejob (= 7.0.8)
@@ -67,8 +69,6 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     benchmark (0.2.1)
-    benchmark-memory (0.2.0)
-      memory_profiler (~> 1)
     builder (3.2.4)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
@@ -101,7 +101,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
@@ -173,8 +172,8 @@ PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  activerecord-import
   benchmark
-  benchmark-memory
   debug
   factory_bot_rails
   faker
