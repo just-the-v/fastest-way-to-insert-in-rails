@@ -154,6 +154,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rake-progressbar (0.0.5)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     reline (0.3.9)
@@ -180,6 +181,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  rake-progressbar
   tzinfo-data
 
 RUBY VERSION
