@@ -21,6 +21,17 @@ namespace :benchmark do
       x.report("Using activerecord-import") do
         Account.import(users)
       end
+
+      Account.delete_all
+      x.report("Using activerecord-copy") do
+        columns = users.first.keys + %w[created_at updated_at]
+        time = Time.now.getutc
+        Account.copy_from_client(columns) do |copy|
+          users.each do |user|
+            copy << (user.values + [time, time])
+          end
+        end
+      end
     end
   end
 end
