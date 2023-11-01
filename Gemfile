@@ -18,3 +18,5 @@ group :development, :test do
 end
 
 
+
+gem "activerecord-copy", "~> 1.1"
