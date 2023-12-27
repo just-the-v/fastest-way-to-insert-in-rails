@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_115631) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_27_130700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,4 +25,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_115631) do
     t.index ["email"], name: "index_accounts_on_email", unique: true
   end
 
+  create_table "missions", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.string "name"
+    t.date "due_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_missions_on_account_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "mission_id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mission_id"], name: "index_tasks_on_mission_id"
+  end
+
+  add_foreign_key "missions", "accounts", on_delete: :cascade
+  add_foreign_key "tasks", "missions", on_delete: :cascade
 end
